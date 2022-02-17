@@ -1,0 +1,147 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+:root {
+  --text-color: #9ae3ffd1;
+  --odd-bg: #ebf3ec;
+  --even-bg: #abdee6;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #555;
+  background-color: var(--even-bg);
+}
+
+.App {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../public/bg.jpg);
+}
+
+.chat {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255 255 255 / 90%);
+}
+.chat h1 {
+  text-align: center;
+  color: var(--text-color);
+  text-shadow: 1px 1px black;
+}
+.chat-area {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: calc(100% - 20px);
+  flex-grow: 1;
+  padding: 10px;
+  gap: 20px;
+}
+.user-list {
+  min-width: 200px;
+  padding: 10px;
+  border-left: 3px solid #6e5d5d;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 2px #6e5d5d;
+}
+.users {
+  display: flex;
+  flex-direction: column;
+  counter-reset: line-number;
+}
+.users .user {
+  color: var(--text-color);
+  text-shadow: 1px 1px grey;
+  counter-increment: line-number;
+  font-weight: bold;
+}
+.users .user:before {
+  content: counter(line-number) ": ";
+}
+.message-list {
+  flex-grow: 1;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.message-list div.message-box {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  padding: 10px;
+  color: var(--text-color);
+  text-shadow: 1px 1px 2px black;
+  gap: 20px;
+}
+.message::after {
+  content: " ";
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -15px;
+  right: auto;
+  top: 20px;
+  bottom: auto;
+  border: 15px solid;
+  border-color: var(--even-bg) transparent transparent transparent;
+}
+.message-list .user {
+  line-height: 50px;
+}
+.message-list .message {
+  background-color: var(--even-bg);
+  border-radius: 15px;
+  position: relative;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: space-between;
+  line-height: 50px;
+  box-shadow: 4px 3px 6px 1px grey;
+}
+.message-list .message .text {
+  flex-grow: 1;
+}
+.message-list .message .time {
+  padding-left: 20px;
+}
+.input-area {
+  width: 100%;
+  display: flex;
+}
+.input-area input {
+  flex-grow: 1;
+  line-height: 25px;
+}
